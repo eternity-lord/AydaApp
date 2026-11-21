@@ -57,15 +57,20 @@ jobs:
 
           apk="app/build/outputs/apk/debug/app-debug.apk"
           asset="AydaNailroom-${TAG_NAME}.apk"
+          cp "$apk" "$asset"
           if gh release view "$TAG_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh release upload "$TAG_NAME" "${apk}#${asset}" --clobber --repo "$GITHUB_REPOSITORY"
+            if gh release view "$TAG_NAME" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' | grep -Fqx 'app-debug.apk'; then
+              gh release delete-asset "$TAG_NAME" app-debug.apk --yes --repo "$GITHUB_REPOSITORY"
+            fi
+            gh release upload "$TAG_NAME" "$asset" --clobber --repo "$GITHUB_REPOSITORY"
           else
-            gh release create "$TAG_NAME" "${apk}#${asset}" \
+            gh release create "$TAG_NAME" "$asset" \
               --repo "$GITHUB_REPOSITORY" \
               --target "$TARGET_SHA" \
               --title "Ayda Nailroom ${TAG_NAME}" \
               --notes "Installable debug APK for Ayda Nailroom. Built and unit-tested from commit ${TARGET_SHA}."
           fi
+          rm -f "$asset"
 
           download_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/releases/download/${TAG_NAME}/${asset}"
           echo "Direct APK download: ${download_url}" | tee -a "$GITHUB_STEP_SUMMARY"
