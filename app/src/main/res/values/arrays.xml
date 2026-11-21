@@ -1,0 +1,30 @@
+<resources>
+    <string-array name="jalali_months">
+        <item>@string/month_1</item><item>@string/month_2</item><item>@string/month_3</item>
+        <item>@string/month_4</item><item>@string/month_5</item><item>@string/month_6</item>
+        <item>@string/month_7</item><item>@string/month_8</item><item>@string/month_9</item>
+        <item>@string/month_10</item><item>@string/month_11</item><item>@string/month_12</item>
+    </string-array>
+    <string-array name="jalali_weekdays_full">
+        <item>@string/weekday_sat</item><item>@string/weekday_sun</item><item>@string/weekday_mon</item>
+        <item>@string/weekday_tue</item><item>@string/weekday_wed</item><item>@string/weekday_thu</item>
+        <item>@string/weekday_fri</item>
+    </string-array>
+    <string-array name="jalali_weekdays_short">
+        <item>@string/day_sat</item><item>@string/day_sun</item><item>@string/day_mon</item>
+        <item>@string/day_tue</item><item>@string/day_wed</item><item>@string/day_thu</item>
+        <item>@string/day_fri</item>
+    </string-array>
+    <string-array name="motivational_lines">
+        <item>@string/today_motivation_1</item><item>@string/today_motivation_2</item>
+        <item>@string/today_motivation_3</item><item>@string/today_motivation_4</item>
+        <item>@string/today_motivation_5</item><item>@string/today_motivation_6</item>
+        <item>@string/today_motivation_7</item><item>@string/today_motivation_8</item>
+        <item>@string/today_motivation_9</item><item>@string/today_motivation_10</item>
+        <item>@string/today_motivation_11</item><item>@string/today_motivation_12</item>
+        <item>@string/today_motivation_13</item><item>@string/today_motivation_14</item>
+        <item>@string/today_motivation_15</item><item>@string/today_motivation_16</item>
+        <item>@string/today_motivation_17</item><item>@string/today_motivation_18</item>
+        <item>@string/today_motivation_19</item><item>@string/today_motivation_20</item>
+    </string-array>
+</resources>
