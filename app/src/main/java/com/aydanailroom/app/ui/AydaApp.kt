@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AccountBalanceWallet
@@ -73,6 +74,7 @@ import com.aydanailroom.app.data.ServiceEntity
 import com.aydanailroom.app.ui.components.ChalkButton
 import com.aydanailroom.app.ui.components.ChalkFrame
 import com.aydanailroom.app.ui.screens.AppointmentsScreen
+import com.aydanailroom.app.ui.screens.ClientDetailsDialog
 import com.aydanailroom.app.ui.screens.ClientsScreen
 import com.aydanailroom.app.ui.screens.FinanceScreen
 import com.aydanailroom.app.ui.screens.GalleryScreen

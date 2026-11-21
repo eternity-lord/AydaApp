@@ -60,7 +60,7 @@ import com.aydanailroom.app.util.formatDuration
 import com.aydanailroom.app.util.formatToman
 import com.aydanailroom.app.util.normalizeDigits
 import com.aydanailroom.app.util.parseNonNegativeLong
-import androidx.compose.ui.text.input.KeyboardOptions
+import androidx.compose.foundation.text.KeyboardOptions
 
 @Composable
 fun ServicesScreen(
