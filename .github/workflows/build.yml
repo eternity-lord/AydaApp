@@ -35,7 +35,34 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Run unit tests and assemble debug APK
-        run: ./gradlew --no-daemon testDebugUnitTest assembleDebug
+        id: gradle-build
+        run: |
+          set +e
+          ./gradlew --no-daemon testDebugUnitTest assembleDebug --stacktrace --console=plain > gradle-build.log 2>&1
+          result=$?
+          if [ "$result" -ne 0 ]; then
+            printf '\n### Gradle failure details\n\n```text\n' >> "$GITHUB_STEP_SUMMARY"
+            tail -n 100 gradle-build.log >> "$GITHUB_STEP_SUMMARY"
+            printf '\n```\n' >> "$GITHUB_STEP_SUMMARY"
+            python3 - <<'PY'
+          from pathlib import Path
+          log = Path("gradle-build.log").read_text(errors="replace").splitlines()
+          useful = [line for line in log if line.startswith(("e: ", "w: ")) or "FAILURE:" in line or "What went wrong:" in line or "Execution failed for task" in line]
+          for line in (useful[-60:] or log[-30:]):
+              escaped = line.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+              print(f"::error::{escaped}")
+          PY
+          fi
+          exit "$result"
+
+      - name: Upload Gradle failure log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: AydaNailroom-build-log
+          path: gradle-build.log
+          if-no-files-found: ignore
+          retention-days: 7
 
       - name: Upload installable debug APK
         uses: actions/upload-artifact@v4
