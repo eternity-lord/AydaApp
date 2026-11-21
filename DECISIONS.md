@@ -22,7 +22,7 @@
 
 - Seeded prices are editable examples, not an official price list. The default working window and appointment suggestion window are 09:00–19:00, and the default reminder is one hour before; the owner should confirm these before daily use.
 - Release signing material is deliberately not committed. The downloadable GitHub artifact is a debug-signed installable APK; configure a private keystore outside the repository before distributing a production release.
-- GitHub releases are published only by the manual `Release APK` workflow on `main`. That isolated workflow gets `contents: write`, validates a semantic-version tag, reruns tests/build, and uploads a version-named APK; the regular CI workflow remains read-only.
+- GitHub releases are published only by the `Release APK` workflow on `main`, either by manual dispatch or the `publish-ayda-release` repository event. That isolated workflow gets `contents: write`, validates a semantic-version tag, reruns tests/build, and uploads a version-named APK; the regular CI workflow remains read-only.
 
 ## Follow-up before a production launch
 
