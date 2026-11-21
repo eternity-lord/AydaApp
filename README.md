@@ -29,7 +29,7 @@
 
 فایل خروجی: `app/build/outputs/apk/debug/app-debug.apk`.
 
-هر push و pull request به‌صورت خودکار تست‌های واحد و build را در GitHub Actions اجرا می‌کند. APK آزمایشی به‌عنوان artifact اکشن ذخیره می‌شود؛ نسخه‌ی قابل نصب مستقیم در GitHub Releases قرار می‌گیرد.
+هر push و pull request تست‌های واحد و build را در GitHub Actions اجرا می‌کند و APK آزمایشی را به‌عنوان artifact نگه می‌دارد. برای انتشار APK قابل نصب مستقیم، workflow «Release APK» را روی شاخه‌ی `main` اجرا کنید؛ این workflow تست و build را دوباره اجرا می‌کند و APK امضاشده با کلید debug را در GitHub Release همان tag بارگذاری می‌کند.
 
 ## Screenshots
 
